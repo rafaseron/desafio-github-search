@@ -8,7 +8,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
-import br.com.igorbag.githubsearch.data.GitHubService
+import br.com.igorbag.githubsearch.data.GitHubInterface
 import br.com.igorbag.githubsearch.domain.Repository
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var nomeUsuario: EditText
     lateinit var btnConfirmar: Button
     lateinit var listaRepositories: RecyclerView
-    lateinit var githubApi: GitHubService
+    lateinit var githubApi: GitHubInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
