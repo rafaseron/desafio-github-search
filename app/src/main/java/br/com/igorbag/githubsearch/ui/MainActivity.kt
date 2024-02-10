@@ -30,11 +30,17 @@ class MainActivity : AppCompatActivity() {
     // Metodo responsavel por realizar o setup da view e recuperar os Ids do layout
     fun setupView() {
         //@TODO 1 - Recuperar os Id's da tela para a Activity com o findViewById
+        nomeUsuario = findViewById(R.id.edtUserName)
+        btnConfirmar = findViewById(R.id.btnConfirm)
+        listaRepositories = findViewById(R.id.rvRepositoryList)
     }
 
     //metodo responsavel por configurar os listeners click da tela
     private fun setupListeners() {
         //@TODO 2 - colocar a acao de click do botao confirmar
+        btnConfirmar.setOnClickListener(){
+            //mandar o conteudo do `nomeUsuario` para a requisição
+        }
     }
 
 

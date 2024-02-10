@@ -3,4 +3,5 @@
     <string name="app_name">GitHubSearch</string>
     <string name="nome_usuario">Username</string>
     <string name="confirmar">COnfirm</string>
+    <string name="saved_username">Nome do usuario</string>
 </resources>
