@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
 import br.com.igorbag.githubsearch.data.GitHubInterface
 import br.com.igorbag.githubsearch.domain.Repository
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -75,14 +77,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Metodo responsavel por fazer a configuracao base do Retrofit
-    fun setupRetrofit(): GitHubInterface {
+    fun setupRetrofit() {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        return retrofit.create(GitHubInterface::class.java)
+        githubApi = retrofit.create(GitHubInterface::class.java)
 
         /*
            @TODO 5 -  realizar a Configuracao base do retrofit
@@ -94,6 +96,27 @@ class MainActivity : AppCompatActivity() {
 
     //Metodo responsavel por buscar todos os repositorios do usuario fornecido
     fun getAllReposByUserName() {
+        val user = nomeUsuario.text.toString()
+        val call = githubApi.getAllRepositoriesByUserName(user)
+        call.enqueue(object : retrofit2.Callback<List<Repository>> {
+            override fun onResponse(call: Call<List<Repository>>, response: Response<List<Repository>>) {
+                if (response.isSuccessful) {
+                    val repos = response.body()
+                    if (repos != null) {
+                        setupAdapter(repos)
+                    } else {
+                        // Handle the case when the response body is null
+                    }
+                } else {
+                    // Handle the case when the response is not successful
+                }
+            }
+
+            override fun onFailure(call: Call<List<Repository>>, t: Throwable) {
+                // Handle network errors or data conversion errors
+            }
+        })
+
         // TODO 6 - realizar a implementacao do callback do retrofit e chamar o metodo setupAdapter se retornar os dados com sucesso
     }
 

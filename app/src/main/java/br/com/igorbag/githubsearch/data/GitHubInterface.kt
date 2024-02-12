@@ -8,6 +8,6 @@ import retrofit2.http.Path
 interface GitHubInterface {
 
     @GET("users/{user}/repos")
-    fun getAllRepositoriesByUser(@Path("user") user: String): Call<List<Repository>>
+    fun getAllRepositoriesByUserName(@Path("user") user: String): Call<List<Repository>>
 
 }
