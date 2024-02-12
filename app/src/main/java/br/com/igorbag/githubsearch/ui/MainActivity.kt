@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
 import br.com.igorbag.githubsearch.data.GitHubInterface
 import br.com.igorbag.githubsearch.domain.Repository
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,7 +75,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Metodo responsavel por fazer a configuracao base do Retrofit
-    fun setupRetrofit() {
+    fun setupRetrofit(): GitHubInterface {
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.github.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(GitHubInterface::class.java)
+
         /*
            @TODO 5 -  realizar a Configuracao base do retrofit
            Documentacao oficial do retrofit - https://square.github.io/retrofit/
