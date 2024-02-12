@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
 import br.com.igorbag.githubsearch.data.GitHubInterface
@@ -124,6 +125,7 @@ class MainActivity : AppCompatActivity() {
     fun setupAdapter(list: List<Repository>) {
         val adaptador = RepositoryAdapter(list)
         listaRepositories.adapter = adaptador
+        listaRepositories.layoutManager = LinearLayoutManager(this)
 
         adaptador.repoItemLister = {
             //openBrowser()
