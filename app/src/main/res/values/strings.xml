@@ -2,5 +2,6 @@
     <string name="app_name">Buscador para GitHub</string>
     <string name="nome_usuario">Nome do usuário</string>
     <string name="confirmar">Confirmar</string>
-    <string name="saved_username">Nome do usuario</string>
+    <string name="saved_username_key">Nome do usuario</string>
+    <string name="saved_username_defaultkey">Nome do usuario</string>
 </resources>

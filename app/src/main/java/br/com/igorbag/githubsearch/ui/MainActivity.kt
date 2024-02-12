@@ -1,10 +1,12 @@
 package br.com.igorbag.githubsearch.ui
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         showUserName()
         setupRetrofit()
         getAllReposByUserName()
+        setupListeners()
     }
 
     // Metodo responsavel por realizar o setup da view e recuperar os Ids do layout
@@ -40,8 +43,11 @@ class MainActivity : AppCompatActivity() {
         //@TODO 2 - colocar a acao de click do botao confirmar
         btnConfirmar.setOnClickListener(){
             //pegar o `nomeUsuario` e salvar em uma sharedpreference. aqui tu vai chamar o método saveUserLocal
-            // executar o método setupRetrofit
-            //mandar o conteudo do `nomeUsuario` para a requisição - executar o metodo getAllReposByUserName
+            saveUserLocal()
+            showUserName()
+            //executar o metodo getAllReposByUserName
+
+            //esse aqui de baixo talvez deva ser executado novamente - verificar
             //executar o RepositoryAdapter(List<Repository>) - no caso esse método pode ficar dentro de getAllReposByUserName
         }
     }
@@ -49,11 +55,20 @@ class MainActivity : AppCompatActivity() {
 
     // salvar o usuario preenchido no EditText utilizando uma SharedPreferences
     private fun saveUserLocal() {
+        val getEditText = nomeUsuario.text.toString()
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+        with(sharedPref.edit()){
+            putString(getString(R.string.saved_username_key), getEditText)
+            apply()
+        }
         //@TODO 3 - Persistir o usuario preenchido na editText com a SharedPref no listener do botao salvar
     }
 
     private fun showUserName() {
-        //exibir a string no Hint do EditText
+        val sharedPref = this?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val defaultValue = resources.getString(R.string.saved_username_defaultkey)
+        val nomeSalvo = sharedPref.getString(getString(R.string.saved_username_key), defaultValue)
+        nomeUsuario.setText(nomeSalvo.toString())
         //@TODO 4- depois de persistir o usuario exibir sempre as informacoes no EditText  se a sharedpref possuir algum valor, exibir no proprio editText o valor salvo
     }
 

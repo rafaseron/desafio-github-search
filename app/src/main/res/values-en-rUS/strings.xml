@@ -2,6 +2,8 @@
 <resources>
     <string name="app_name">GitHubSearch</string>
     <string name="nome_usuario">Username</string>
-    <string name="confirmar">COnfirm</string>
-    <string name="saved_username">Nome do usuario</string>
+    <string name="confirmar">Confirm</string>
+    <string name="saved_username_key">Username</string>
+    <string name="saved_username_defaultkey">Username</string>
+
 </resources>
