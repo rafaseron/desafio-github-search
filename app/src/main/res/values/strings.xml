@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GitHubSearch</string>
+    <string name="app_name">Buscador para GitHub</string>
     <string name="nome_usuario">Nome do usuário</string>
     <string name="confirmar">Confirmar</string>
     <string name="saved_username">Nome do usuario</string>
