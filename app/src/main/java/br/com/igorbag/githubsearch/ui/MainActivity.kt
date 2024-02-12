@@ -39,7 +39,10 @@ class MainActivity : AppCompatActivity() {
     private fun setupListeners() {
         //@TODO 2 - colocar a acao de click do botao confirmar
         btnConfirmar.setOnClickListener(){
-            //mandar o conteudo do `nomeUsuario` para a requisição
+            //pegar o `nomeUsuario` e salvar em uma sharedpreference. aqui tu vai chamar o método saveUserLocal
+            // executar o método setupRetrofit
+            //mandar o conteudo do `nomeUsuario` para a requisição - executar o metodo getAllReposByUserName
+            //executar o RepositoryAdapter(List<Repository>) - no caso esse método pode ficar dentro de getAllReposByUserName
         }
     }
 
@@ -50,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showUserName() {
+        //exibir a string no Hint do EditText
         //@TODO 4- depois de persistir o usuario exibir sempre as informacoes no EditText  se a sharedpref possuir algum valor, exibir no proprio editText o valor salvo
     }
 
