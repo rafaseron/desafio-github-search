@@ -127,10 +127,10 @@ class MainActivity : AppCompatActivity() {
         listaRepositories.adapter = adaptador
         listaRepositories.layoutManager = LinearLayoutManager(this)
 
-        adaptador.repoItemLister = {
+        adaptador.repoItemListener = {
             //openBrowser()
         }
-        adaptador.btnShareLister = {
+        adaptador.btnShareListener = {
             //shareRepositoryLink()
         }
 

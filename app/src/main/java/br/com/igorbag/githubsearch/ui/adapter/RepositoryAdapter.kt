@@ -3,19 +3,17 @@ package br.com.igorbag.githubsearch.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
 import br.com.igorbag.githubsearch.domain.Repository
-import org.w3c.dom.Text
 
 class RepositoryAdapter(private val repositories: List<Repository>) : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {
 
-    var repoItemLister: (Repository) -> Unit = {}
-    var btnShareLister: (Repository) -> Unit = {}
+    var repoItemListener: (Repository) -> Unit = {}
+    var btnShareListener: (Repository) -> Unit = {}
 
     class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val txtRepositoryName: TextView
@@ -50,15 +48,15 @@ class RepositoryAdapter(private val repositories: List<Repository>) : RecyclerVi
         //Exemplo de Bind
         //  holder.preco.text = repositories[position].atributo
 
-        // Exemplo de click no item
-        //holder.itemView.setOnClickListener {
-        // carItemLister(repositores[position])
-        //}
+        // Click no CardView
+        holder.cardViewItem.setOnClickListener {
+         repoItemListener(repositories[position])
+        }
 
-        // Exemplo de click no btn Share
-        //holder.favorito.setOnClickListener {
-        //    btnShareLister(repositores[position])
-        //}
+        // Click no Share Button
+        holder.btnShare.setOnClickListener {
+            btnShareListener(repositories[position])
+        }
     }
 
     // Pega a quantidade de repositorios da lista
