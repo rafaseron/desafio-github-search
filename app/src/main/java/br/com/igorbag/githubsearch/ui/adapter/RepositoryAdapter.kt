@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.igorbag.githubsearch.R
 import br.com.igorbag.githubsearch.domain.Repository
@@ -17,9 +19,14 @@ class RepositoryAdapter(private val repositories: List<Repository>) : RecyclerVi
 
     class RepositoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val txtRepositoryName: TextView
+        val btnShare: ImageView
+        val cardViewItem: CardView
 
         init {
             txtRepositoryName = itemView.findViewById(R.id.txtRepositoryName)
+            btnShare = itemView.findViewById(R.id.imgShare)
+            cardViewItem = itemView.findViewById(R.id.clCardView)
+
         }
 
 
@@ -36,6 +43,8 @@ class RepositoryAdapter(private val repositories: List<Repository>) : RecyclerVi
     // Pega o conteudo da view e troca pela informacao de item de uma lista
     override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
         holder.txtRepositoryName.text = repositories[position].name
+        //holder.cardViewItem = repositories[position]
+        //holder.btnShare = repositories[position]
 
         //@TODO 8 -  Realizar o bind do viewHolder
         //Exemplo de Bind
